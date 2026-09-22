@@ -24,63 +24,33 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
 
           script: |
-        set -e
-        script: |
-        set -e
-        export PATH="/home/etudiant/.bun/bin:$PATH"
+            set -e
+            export PATH="/home/etudiant/.bun/bin:$PATH"
 
-        echo "======================================"
-        echo "Début du déploiement"
-        echo "======================================"
+            echo "======================================"
+            echo "Début du déploiement"
+            echo "======================================"
 
-        cd /var/www/scolarite/astro-scolarite-sqlite
+            cd /var/www/scolarite/astro-scolarite-sqlite
 
-        echo "Mise à jour du code..."
-        git pull origin
-        
-        echo "Installation des dépendances..."
-        bun ci
+            echo "Mise à jour du code..."
+            git pull origin
+            
+            echo "Installation des dépendances..."
+            bun ci
 
-        echo "Compilation Astro..."
-        bun run --bun build
+            echo "Compilation Astro..."
+            bun run --bun build
 
-        echo "Redémarrage de l'application..."
-        sudo systemctl restart scolarite
+            echo "Redémarrage de l'application..."
+            sudo systemctl restart scolarite
 
-        echo "Vérification du service..."
-        sudo systemctl is-active --quiet scolarite
+            echo "Vérification du service..."
+            sudo systemctl is-active --quiet scolarite
 
-        echo "Health check..."
-        curl --fail http://127.0.0.1:3000/
+            echo "Health check..."
+            curl --fail http://127.0.0.1:3000/
 
-        echo "======================================"
-        echo "Déploiement terminé"
-        echo "======================================"
-
-        echo "======================================"
-        echo "Début du déploiement"
-        echo "======================================"
-
-        cd /var/www/scolarite/astro-scolarite-sqlite
-
-        echo "Mise à jour du code..."
-        git pull origin
-        
-        echo "Installation des dépendances..."
-        bun ci
-
-        echo "Compilation Astro..."
-        bun run --bun build
-
-        echo "Redémarrage de l'application..."
-        sudo systemctl restart scolarite
-
-        echo "Vérification du service..."
-        sudo systemctl is-active --quiet scolarite
-
-        echo "Health check..."
-        curl --fail http://127.0.0.1:3000/
-
-        echo "======================================"
-        echo "Déploiement terminé"
-        echo "======================================"
+            echo "======================================"
+            echo "Déploiement terminé"
+            echo "======================================"
