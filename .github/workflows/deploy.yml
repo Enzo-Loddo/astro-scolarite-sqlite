@@ -25,6 +25,7 @@ jobs:
 
           script: |
             set -e
+            export PATH="$HOME/.bun/bin:$PATH
 
             echo "======================================"
             echo "Début du déploiement"
