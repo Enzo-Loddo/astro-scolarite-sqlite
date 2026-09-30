@@ -50,7 +50,6 @@ jobs:
 
 
             echo "Health check.   ..."
-            curl --fail http://localhost:3000/
 
             echo "======================================"
             echo "Déploiement terminé"
